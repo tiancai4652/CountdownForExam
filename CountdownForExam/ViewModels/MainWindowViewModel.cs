@@ -32,7 +32,7 @@ namespace CountdownForExam.ViewModels
             {
                 while (true)
                 {
-                    Thread.Sleep(1000 /** 60 * 60*/);
+                    Thread.Sleep(1000 * 60 * 60);
                     Text = (target - DateTime.Now).TotalDays.ToString();
                 }
             });
