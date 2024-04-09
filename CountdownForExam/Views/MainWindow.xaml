@@ -10,6 +10,7 @@
     AllowsTransparency="True"
     Background="#02FFFFFF"
     Left="0"
+    ShowInTaskbar="False"
     Top="0"
     Topmost="True"
     WindowStyle="None">
@@ -20,6 +21,6 @@
             FontWeight="Bold"
             Foreground="#FFC62222"
             OpacityMask="#FF372727"
-            Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}" />
+            Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
