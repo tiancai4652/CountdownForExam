@@ -26,13 +26,13 @@ namespace CountdownForExam.ViewModels
         public MainWindowViewModel()
         {
             var target = new DateTime(2024, 5, 24);
-
+            Text = (target - DateTime.Now).TotalDays.ToString();
 
             Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
-                    Thread.Sleep(1000 * 60 * 60);
+                    Thread.Sleep(1000 /** 60 * 60*/);
                     Text = (target - DateTime.Now).TotalDays.ToString();
                 }
             });

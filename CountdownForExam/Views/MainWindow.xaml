@@ -20,6 +20,6 @@
             FontWeight="Bold"
             Foreground="#FFC62222"
             OpacityMask="#FF372727"
-            Text="{Binding Text}" />
+            Text="{Binding Text,UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
