@@ -23,17 +23,19 @@ namespace CountdownForExam.ViewModels
             set { SetProperty(ref _Text, value); }
         }
 
-        public MainWindowViewModel()
+
+
+        public MainWindowViewModel(string description, DateTime target)
         {
-            var target = new DateTime(2024, 5, 24);
-            Text = (target - DateTime.Now).TotalDays.ToString();
+            //var target = new DateTime(2024, 5, 24);
+            Text = description + ":" + ((int)((target - DateTime.Now).TotalDays) + 1).ToString();
 
             Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
                     Thread.Sleep(1000 * 60 * 60);
-                    Text = (target - DateTime.Now).TotalDays.ToString();
+                    Text = description + ":" + ((int)((target - DateTime.Now).TotalDays) + 1).ToString();
                 }
             });
         }
