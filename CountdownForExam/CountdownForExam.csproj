@@ -4,9 +4,13 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>countdown.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="countdown.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="countdown.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="countdown.ico" />
