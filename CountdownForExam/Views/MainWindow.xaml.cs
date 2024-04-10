@@ -19,7 +19,7 @@ namespace CountdownForExam.Views
             // 创建 NotifyIcon
             notifyIcon = new NotifyIcon
             {
-                Icon = new Icon(System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/countdown.ico")).Stream),
+                Icon = new Icon("countdown.ico", 32, 32),
                 Visible = true,
                 Text = "Countdown" // 鼠标悬停时显示的文本
             };

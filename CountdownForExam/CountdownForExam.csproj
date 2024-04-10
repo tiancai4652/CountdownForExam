@@ -4,21 +4,20 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>countdown.ico</ApplicationIcon>
+    <ApplicationIcon>countdown2.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="countdown.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="countdown.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="countdown.ico" />
+    <Content Include="countdown2.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.4.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="countdown.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
