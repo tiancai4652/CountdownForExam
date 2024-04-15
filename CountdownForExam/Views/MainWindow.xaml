@@ -7,19 +7,17 @@
     Width="auto"
     Height="30"
     AllowsTransparency="True"
-    Background="#02FFFFFF"
+    Background="Transparent"
     Left="0"
     ShowInTaskbar="False"
     Top="0"
     Topmost="True"
     WindowStyle="None">
-    <Grid>
-        <TextBlock
-            FontFamily="Arial Black"
-            FontSize="20"
-            FontWeight="Bold"
-            Foreground="#FFC62222"
-            OpacityMask="#FF372727"
-            Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
-    </Grid>
+    <TextBlock
+        FontFamily="Arial Black"
+        FontSize="20"
+        FontWeight="Bold"
+        Foreground="#FFC62222"
+        OpacityMask="#FF372727"
+        Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}" />
 </Window>
