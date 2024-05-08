@@ -1,0 +1,160 @@
+﻿<base:NotifierViewBase x:Name="notifierViewBase" x:Class="ToastNotification.View.NotifierView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:base="clr-namespace:ToastNotification.Base"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToastNotification.View"
+                       
+                       xmlns:vm="clr-namespace:ToastNotification.ViewModel"
+                    Width="350" Height="150" 
+        mc:Ignorable="d"
+        Title="NotifierView"  AllowsTransparency="True" Topmost="True" Background="#FF131212" Opacity="{Binding Opacity}" WindowStyle="None" ShowInTaskbar="False"  >
+    <!--DataContext="{Binding Source={StaticResource Locator},Path=NotifierVM}"-->
+    <base:NotifierViewBase.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="#FFDDDDDD"/>
+            <Setter Property="BorderBrush" Value="#FF707070"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!--<Trigger Property="IsDefaulted" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>-->
+                            <!--<Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                            </Trigger>-->
+                            <!--<Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                            </Trigger>-->
+                            <!--<Trigger Property="ToggleButton.IsChecked" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                                <Setter Property="Foreground" Value="#FF838383"/>
+                            </Trigger>-->
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="OnMouseEnter1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="image">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeave1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="image">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Image_OnMouseEnter">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(Image.Source)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <BitmapImage UriSource="/ToastNotification;component/Resource/arrow2.png" />
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Image_OnMouseLeave">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="image" Storyboard.TargetProperty="(Image.Source)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                    <DiscreteObjectKeyFrame.Value>
+                        <BitmapImage UriSource="/ToastNotification;component/Resource/arrow1.png" />
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+
+
+        <!--<Storyboard x:Key="OnLoaded4">
+       https://social.msdn.microsoft.com/Forums/zh-CN/88fccc2d-bd7a-44f5-96aa-5d9c2ff19d43/2608027861209233246727492-storyboard?forum=wpfzhchs
+        WPF动画中的很多属性是在动画开始后是不能被改变的,这个很容易理解,比如TO FROM 等属性，
+        如果不把这些值冻结住，在动画过成中随意的改变这些值的话，就会造成动画的过程值计算混乱。
+        同时，动画在一个独立的线程中去计算具体的中间值，如果邦定了这个在另外独立线程中所需要的属性的话，就会造成上面这个错误。
+        如何避免，不要对于动画上的那些属性作邦定。通过代码在动画 开始前 设置值，然后开始动画，过程中不要尝试去改变值，就可以了。
+        <DoubleAnimation From="{Binding Path=RightOri,Source=Self}" To="{Binding Path=RightFinal,Source=Self}"
+ RepeatBehavior="Forever" Duration="0:0:1" Storyboard.TargetProperty="Left"/>
+        </Storyboard>-->
+
+    </base:NotifierViewBase.Resources>
+    <base:NotifierViewBase.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="notifierViewBase">
+            <BeginStoryboard x:Name="OnMouseEnter1_BeginStoryboard" Storyboard="{StaticResource OnMouseEnter1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="notifierViewBase">
+            <BeginStoryboard x:Name="OnMouseLeave1_BeginStoryboard" Storyboard="{StaticResource OnMouseLeave1}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="image">
+            <BeginStoryboard x:Name="Image_OnMouseEnter_BeginStoryboard" Storyboard="{StaticResource Image_OnMouseEnter}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseLeave" SourceName="image">
+            <BeginStoryboard x:Name="Image_OnMouseLeave_BeginStoryboard" Storyboard="{StaticResource Image_OnMouseLeave}"/>
+        </EventTrigger>
+    </base:NotifierViewBase.Triggers>
+    <Grid x:Name="grid" >
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="35"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Margin="0,20,0,0" >
+                    <Image  Width="30" Height="30" Opacity="{Binding Path=Opacity,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type base:NotifierViewBase}}}" Source="{Binding ImageSource}" ></Image>
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Column="1" Margin="0,20,0,20" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid  >
+                    <TextBlock HorizontalAlignment="Left" TextAlignment="Justify" VerticalAlignment="Top"  FontSize="15" FontWeight="Bold" Foreground="White"  Text="{Binding Header}"  ></TextBlock>
+                </Grid>
+                <Grid  Grid.Row="1" >
+                    <TextBlock HorizontalAlignment="Left" TextAlignment="Justify"  MaxWidth="300" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15"  Foreground="#FFCDC9C9"   Text="{Binding Context}" ></TextBlock>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2" >
+                <Button ToolTip="Cancel" Name="CloseButton" Style="{DynamicResource ButtonStyle1}" Margin="5" Background="Transparent" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseButton_Click" >
+                    <Image x:Name="image" Source="/ToastNotification;component/Resource/arrow1.png" Visibility="Visible"  />
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</base:NotifierViewBase>

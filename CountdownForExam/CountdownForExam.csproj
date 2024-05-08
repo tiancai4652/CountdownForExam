@@ -16,6 +16,9 @@
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WPF_StatusNotification-master\ToastNotification.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <None Update="countdown.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
